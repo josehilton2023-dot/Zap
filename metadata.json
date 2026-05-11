@@ -1,0 +1,6 @@
+{
+  "name": "ZapBooth",
+  "description": "Sistema premium de monitoramento de cabines de fotos (Photobooth) para envio automatizado de tirinhas e fotos direto para o WhatsApp dos convidados.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}

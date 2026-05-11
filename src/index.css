@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-fun: "Fredoka One", cursive, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+@layer utilities {
+  /* Scrollbar styling for a cleaner dark/glass aesthetic */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(156, 163, 175, 0.2);
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(156, 163, 175, 0.4);
+  }
+
+  /* Photobooth wood panel background motif */
+  .bg-wood-mesh {
+    background-color: #0b0f17;
+    background-image: 
+      radial-gradient(circle at 100% 150%, #151b26 24%, #0b0f17 25%, #0b0f17 28%, #151b26 29%, #151b26 36%, #0b0f17 36%, #0b0f17 40%, transparent 40%, transparent 100%),
+      radial-gradient(circle at 0% 150%, #151b26 24%, #0b0f17 25%, #0b0f17 28%, #151b26 29%, #151b26 36%, #0b0f17 36%, #0b0f17 40%, transparent 40%, transparent 100%);
+    background-size: 80px 80px;
+  }
+
+  /* LED Marquee bulbs border animation */
+  .marquee-dots {
+    background-image: radial-gradient(#ff007f 25%, transparent 25%), radial-gradient(#25d366 25%, transparent 25%);
+    background-size: 16px 16px;
+    background-position: 0 0, 8px 8px;
+  }
+
+  /* Ticket stamp stub cutout on container borders */
+  .ticket-edges-y {
+    position: relative;
+  }
+  .ticket-edges-y::before, .ticket-edges-y::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 14px;
+    height: 24px;
+    background-color: #0d1118; /* aligns with container background */
+    border-radius: 999px;
+    z-index: 10;
+  }
+  .ticket-edges-y::before {
+    left: -8px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .ticket-edges-y::after {
+    right: -8px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* Photo strip film look with holes on side */
+  .film-holes {
+    background-image: radial-gradient(circle, rgba(0,0,0,0.85) 4px, transparent 4px);
+    background-size: 12px 24px;
+    background-repeat: repeat-y;
+  }
+
+  /* Custom camera flash screen animation keyframes */
+  @keyframes flashAnimation {
+    0% { opacity: 0; }
+    5% { opacity: 1; }
+    15% { opacity: 0.95; }
+    100% { opacity: 0; }
+  }
+
+  .flash-overlay {
+    animation: flashAnimation 1.8s ease-out forwards;
+  }
+
+  /* Blink animation for physical light elements */
+  @keyframes marqueeBlink {
+    0%, 100% { opacity: 0.3; filter: drop-shadow(0 0 2px rgba(236,72,153, 0.2)); }
+    50% { opacity: 1; filter: drop-shadow(0 0 10px rgba(236,72,153, 1)) drop-shadow(0 0 18px rgba(37,211,102, 0.8)); }
+  }
+  .animate-neon-marquee {
+    animation: marqueeBlink 1.2s infinite alternate;
+  }
+
+  /* Retro print scan effect lines */
+  .scanline-overlay {
+    background: linear-gradient(
+      rgba(18, 16, 16, 0) 50%, 
+      rgba(0, 0, 0, 0.25) 50%
+    );
+    background-size: 100% 4px;
+  }
+
+  /* Continuous slow paper roll feeding animation */
+  @keyframes printFeed {
+    from { background-position-y: 0px; }
+    to { background-position-y: 40px; }
+  }
+  .animate-print-feed {
+    animation: printFeed 2s linear infinite;
+  }
+}
